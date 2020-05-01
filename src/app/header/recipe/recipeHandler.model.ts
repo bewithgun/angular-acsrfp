@@ -1,4 +1,4 @@
-export class recipeHandler 
+export class recipeHandler
 {
   recipeName;
   recipeDescription;
