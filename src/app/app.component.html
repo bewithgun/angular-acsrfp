@@ -1,1 +1,5 @@
-<app-header></app-header>
+<app-header (ChangeNavStatus)="changeDisplayStatus($event)"></app-header>
+<div class="container">
+  <app-recipe-list *ngIf="TodisplayRecipe"></app-recipe-list>
+  <app-shopping *ngIf="TodisplayShoppingList"></app-shopping>
+</div>

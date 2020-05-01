@@ -6,4 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
+  TodisplayRecipe = true;
+  TodisplayShoppingList = false;
+  changeDisplayStatus(event)
+  {
+    this.TodisplayRecipe = event.ToDisplayRecipe;
+    this.TodisplayShoppingList = event.ToisplayShoppingList;
+  }
 }
