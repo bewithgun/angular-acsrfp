@@ -11,6 +11,6 @@ export class AppComponent  {
   changeDisplayStatus(event)
   {
     this.TodisplayRecipe = event.ToDisplayRecipe;
-    this.TodisplayShoppingList = event.ToisplayShoppingList;
+    this.TodisplayShoppingList = event.ToDisplayShoppingList;
   }
 }
