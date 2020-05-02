@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { recipeHandler } from '../recipeHandler.model';
 
 @Component({
@@ -7,6 +7,11 @@ import { recipeHandler } from '../recipeHandler.model';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
+  @Output() JLRecipeListOnSelect = new EventEmitter<recipeHandler>();
+  JFonSelectRecipeItem(recipe: recipeHandler)
+  {
+    this.JLRecipeListOnSelect.emit(recipe)
+  }
 
 recipes: recipeHandler[] = 
 [
