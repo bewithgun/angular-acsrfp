@@ -3,7 +3,7 @@ import { ingredientHandler } from './indrigients.model';
 
 @Injectable()
 export class ShoppingListServService {
-ingredients : ingredientHandler[]=
+private ingredients : ingredientHandler[]=
 [
   new ingredientHandler("Tomatos",12),
   new ingredientHandler("Bringle",20)
@@ -11,6 +11,12 @@ ingredients : ingredientHandler[]=
 addIngredient(name: string,amount: number)
 {
   this.ingredients.push(new ingredientHandler(name,amount));
+}
+
+getIngredients()
+{
+  return this.ingredients.slice();
+
 }
 
   constructor() { }

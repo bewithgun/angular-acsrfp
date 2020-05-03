@@ -6,7 +6,7 @@
       <a
         class="list-group-item"
         style="cursor: pointer"
-        *ngFor="let i of shopingSV.ingredients"
+        *ngFor="let i of shopingSV.getIngredients()"
       >
         {{ i.name }} ({{ i.amount }})
       </a>
