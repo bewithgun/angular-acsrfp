@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ingredientHandler } from '../../shared/indrigients.model';
+import { ShoppingListServService } from '../../shared/shopping-list-serv.service';
 
 @Component({
   selector: 'app-shopping',
@@ -7,18 +8,7 @@ import { ingredientHandler } from '../../shared/indrigients.model';
   styleUrls: ['./shopping.component.css']
 })
 export class ShoppingComponent implements OnInit {
-  
-  JFAddNewIngredient(ele)
-  {
-    this.ingredients.push(new ingredientHandler(ele.namev,ele.amount))
-  }
-ingredients : ingredientHandler[]=
-[
-  new ingredientHandler("Tomatos",12),
-  new ingredientHandler("Bringle",20)
-]
-  constructor() { }
-
+  constructor(private shopingSV: ShoppingListServService) { }
   ngOnInit(): void {
   }
 

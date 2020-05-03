@@ -12,10 +12,12 @@ import { RecipeDetailComponent } from './header/recipe/recipe-detail/recipe-deta
 import { ShoppingEditComponent } from './header/shopping/shopping-edit/shopping-edit.component';
 import { RecipeItemComponent } from './header/recipe/recipe-item/recipe-item.component';
 import { AppDropdownDirective } from './app-dropdown.directive';
+import { ShoppingListServService } from './shared/shopping-list-serv.service';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule ],
   declarations: [ AppComponent, HelloComponent, HeaderComponent, RecipeComponent, ShoppingComponent, RecipeListComponent, RecipeDetailComponent, ShoppingEditComponent, RecipeItemComponent, AppDropdownDirective ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ],
+  providers: [ShoppingListServService]
 })
 export class AppModule { }
