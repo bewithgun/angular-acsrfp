@@ -13,7 +13,7 @@
     <div class="btn-group" appAppDropdown>
       <button type="button" class="btn btn-primary dropdown-toggle">Manage Recipe <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li><a href="">To shopping list</a></li>
+      <li><a href="#" (click)="onAddToShoppingList()">To shopping list</a></li>
       <li><a href="">Edit recipe</a></li>
       <li><a href="">Delete reipe</a></li>
     </ul>
@@ -26,7 +26,11 @@
   </div>
 </div>
 <div class="row">
-	<div class="col-xs-12" *ngFor = "let k of recipeData.recipeIngredients">
-    {{k.name}} = {{k.amount}}
+	<div class="col-xs-12">
+    <div #RecipeIng>
+      <div class="row" *ngFor = "let k of recipeData.recipeIngredients">
+      <p style="display:inline; word-wrap: break-word;">{{k.name}}</p> = <p style="display:inline; word-wrap: break-word;">{{k.amount}}</p>
+      </div>
+    </div>
   </div>
 </div>

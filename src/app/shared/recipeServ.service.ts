@@ -10,7 +10,9 @@ private recipes: recipeHandler[] =
   'https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/food_combos_lose_weight_slideshow/493ss_thinkstock_rf_avocado_greens.jpg',
   [
     new ingredientHandler('Palak',20),
-    new ingredientHandler('Bendi',15)
+    new ingredientHandler('Bendi',15),
+    new ingredientHandler('Maggi',1)
+
   ]
   ),
   
@@ -24,8 +26,7 @@ private recipes: recipeHandler[] =
 
 getRecipes()
 {
-  console.log("hii",this.recipes[1].recipeIngredients);
-  return this.recipes.slice();
+    return this.recipes.slice();
 }
 
 

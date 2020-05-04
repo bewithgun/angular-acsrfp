@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { recipeHandler } from '../recipeHandler.model';
+import { ShoppingListServService } from '../../../shared/shopping-list-serv.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -8,10 +9,19 @@ import { recipeHandler } from '../recipeHandler.model';
 })
 export class RecipeDetailComponent implements OnInit {
   @Input() recipeData: recipeHandler;
-  
+  @ViewChild('RecipeIng') RecipeIngJS;
 
-  constructor() { }
+  constructor(private ShoppingSV: ShoppingListServService) { }
 
+  onAddToShoppingList()
+  {
+    for(let i of this.RecipeIngJS.nativeElement.children)
+    {
+      var IngName = i.children[0].textContent;
+      var IngAmount = i.children[1].textContent
+      this.ShoppingSV.addIngredient(IngName,IngAmount);
+    }
+  }
   ngOnInit(): void {
   }
 

@@ -14,7 +14,7 @@ export class RecipeListComponent implements OnInit {
   {
     this.JLRecipeListOnSelect.emit(recipe)
   }
-recipes: recipeHandler[];
+  recipes: recipeHandler[];
   constructor(private recSV: recipeServ) { }
 
   ngOnInit() {
