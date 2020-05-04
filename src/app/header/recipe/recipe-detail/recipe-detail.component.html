@@ -26,7 +26,7 @@
   </div>
 </div>
 <div class="row">
-	<div class="col-xs-12">
-    indrigients
+	<div class="col-xs-12" *ngFor = "let k of recipeData.recipeIngredients">
+    {{k.name}} = {{k.amount}}
   </div>
 </div>
