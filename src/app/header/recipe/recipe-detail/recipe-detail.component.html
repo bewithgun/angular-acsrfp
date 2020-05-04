@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <img [src]="recipeData.recipeImageUrl" style="max-height: 300px" alt="" class="img-responsive">
+    <img [src]="recipeData.recipeImageUrl" style="max-height: 100px" alt="" class="img-responsive">
   </div>
 </div>
 <div class="row">
@@ -27,8 +27,8 @@
 </div>
 <div class="row">
 	<div class="col-xs-12">
-    <div #RecipeIng>
-      <div class="row" *ngFor = "let k of recipeData.recipeIngredients">
+    <div class="list-group-item clearfi" #RecipeIng>
+      <div class="row list-group-text" *ngFor = "let k of recipeData.recipeIngredients" >
       <p style="display:inline; word-wrap: break-word;">{{k.name}}</p> = <p style="display:inline; word-wrap: break-word;">{{k.amount}}</p>
       </div>
     </div>
