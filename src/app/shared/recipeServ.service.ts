@@ -24,10 +24,14 @@ private recipes: recipeHandler[] =
   ])
 ]
 
-getRecipes()
+public getRecipes(No: number)
 {
+  if(No)
+    return this.recipes.slice(No-1);
+  else
     return this.recipes.slice();
 }
+
 
 
 

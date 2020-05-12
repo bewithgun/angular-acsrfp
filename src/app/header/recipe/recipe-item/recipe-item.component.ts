@@ -1,5 +1,7 @@
 import { Component, OnInit, Input ,Output, EventEmitter} from '@angular/core';
 import { recipeHandler } from '../recipeHandler.model';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-item',
@@ -12,9 +14,11 @@ export class RecipeItemComponent implements OnInit {
 JFOnSelctRecipe(recipeData)
 {
   //Emitting event with selected recipe;
-  this.JLonSelectRecipe.emit(recipeData);
+  // this.JLonSelectRecipe.emit(recipeData);
+  this.routeM.navigate(['recipes/detail']);
+
 }
-  constructor() {}
+  constructor(private routeM : Router) {}
 
   ngOnInit(): void {
   }

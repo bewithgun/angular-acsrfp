@@ -13,9 +13,17 @@ import { ShoppingEditComponent } from './header/shopping/shopping-edit/shopping-
 import { RecipeItemComponent } from './header/recipe/recipe-item/recipe-item.component';
 import { AppDropdownDirective } from './app-dropdown.directive';
 import { ShoppingListServService } from './shared/shopping-list-serv.service';
+import { RouterModule, Routes } from '@angular/router';
 
+var route: Routes =
+[
+  {path: 'recipes', component: RecipeComponent, children: [
+    {path: 'detail/:id', component: RecipeDetailComponent}
+  ]},
+  {path: 'shopping', component: ShoppingComponent}
+]
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
+  imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(route)],
   declarations: [ AppComponent, HelloComponent, HeaderComponent, RecipeComponent, ShoppingComponent, RecipeListComponent, RecipeDetailComponent, ShoppingEditComponent, RecipeItemComponent, AppDropdownDirective ],
   bootstrap:    [ AppComponent ],
   providers: [ShoppingListServService]

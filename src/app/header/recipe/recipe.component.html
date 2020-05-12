@@ -3,7 +3,8 @@
     <app-recipe-list (JLRecipeListOnSelect)="JFonSelectRecipe($event)"></app-recipe-list>
   </div>
   <div class="col-md-7">
-    <app-recipe-detail *ngIf="recipe else notSelected" [recipeData]="recipe"></app-recipe-detail>
+    <!-- <app-recipe-detail *ngIf="recipe else notSelected" ></app-recipe-detail> -->
+    <router-outlet></router-outlet>
     <ng-template #notSelected>Please select Recipe</ng-template>
   </div>
 </div>
