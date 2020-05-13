@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { recipeHandler } from '../recipeHandler.model';
 import { ShoppingListServService } from '../../../shared/shopping-list-serv.service';
 import { recipeServ } from '../../../shared/recipeServ.service';
-import { RouterLinkActive, ActivatedRouteSnapshot } from '@angular/router';
+import { RouterLinkActive, ActivatedRouteSnapshot, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -11,11 +11,13 @@ import { RouterLinkActive, ActivatedRouteSnapshot } from '@angular/router';
 })
 export class RecipeDetailComponent implements OnInit {
   // @Input() recipeData: recipeHandler;
+  FullrecipeData: recipeHandler[];
   recipeData: recipeHandler;
+
 
   // @ViewChild('RecipeIng') RecipeIngJS;
 
-  constructor(private ShoppingSV: ShoppingListServService,private RecipeSV: recipeServ,private activeLinkData : ActivatedRouteSnapshot) { }
+  constructor(private ShoppingSV: ShoppingListServService,private RecipeSV: recipeServ,private activeR : ActivatedRoute) { }
   
   onAddToShoppingList()
   {
@@ -27,6 +29,13 @@ export class RecipeDetailComponent implements OnInit {
   }
   ngOnInit(){
     // this.RecipeSV.getRecipes(+this.activeLinkData.params['id']);
+
+   this.FullrecipeData = this.RecipeSV.getRecipes();
+   this.activeR.params.subscribe(
+     (params : Params)=>{
+       this.recipeData = this.FullrecipeData[+params['id']-1]
+     }
+   )
   }
 
 }
