@@ -13,7 +13,7 @@ export class RecipeDetailComponent implements OnInit {
   // @Input() recipeData: recipeHandler;
   FullrecipeData: recipeHandler[];
   recipeData: recipeHandler;
-
+  id : number;
 
   // @ViewChild('RecipeIng') RecipeIngJS;
 
@@ -33,7 +33,8 @@ export class RecipeDetailComponent implements OnInit {
    this.FullrecipeData = this.RecipeSV.getRecipes();
    this.activeR.params.subscribe(
      (params : Params)=>{
-       this.recipeData = this.FullrecipeData[+params['id']-1]
+       this.id=+params['id'];
+       this.recipeData = this.FullrecipeData[this.id-1];
      }
    )
   }

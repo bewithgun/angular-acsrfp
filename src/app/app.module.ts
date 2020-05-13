@@ -15,18 +15,22 @@ import { AppDropdownDirective } from './app-dropdown.directive';
 import { ShoppingListServService } from './shared/shopping-list-serv.service';
 import { RouterModule, Routes } from '@angular/router';
 import { RecipeNotSelectedComponent } from './header/recipe/recipe-not-selected/recipe-not-selected.component';
+import { RecipeEditComponent } from './header/recipe/recipe-edit/recipe-edit.component';
 
 var route: Routes =
 [
+  {path: '', component: RecipeComponent},
   {path: 'recipes', component: RecipeComponent, children: [
     {path: 'detail/:id', component: RecipeDetailComponent},
-    {path: '**', component: RecipeNotSelectedComponent}
+    {path: 'new', component: RecipeEditComponent},
+    {path: 'detail/:id/edit', component: RecipeEditComponent},
+    {path: '', component: RecipeNotSelectedComponent}
   ]},
   {path: 'shopping', component: ShoppingComponent}
 ]
 @NgModule({
   imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(route)],
-  declarations: [ AppComponent, HelloComponent, HeaderComponent, RecipeComponent, ShoppingComponent, RecipeListComponent, RecipeDetailComponent, ShoppingEditComponent, RecipeItemComponent, AppDropdownDirective, RecipeNotSelectedComponent ],
+  declarations: [ AppComponent, HelloComponent, HeaderComponent, RecipeComponent, ShoppingComponent, RecipeListComponent, RecipeDetailComponent, ShoppingEditComponent, RecipeItemComponent, AppDropdownDirective, RecipeNotSelectedComponent, RecipeEditComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ShoppingListServService]
 })
