@@ -29,6 +29,11 @@ updateIngredients(N: number,name: string,amount: number)
   this.ingredients[N]=new ingredientHandler(name,amount);
 }
 
+deleteIngredients(N)
+{
+  this.ingredients.splice(N,1);
+}
+
   constructor() { }
 
 }

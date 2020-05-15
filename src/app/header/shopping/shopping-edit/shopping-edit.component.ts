@@ -49,6 +49,13 @@ JFonAddIngredients(form : NgForm)
   onClear()
   {
     this.formJsV.reset();
+    this.isEditMode=false;
+  }
+
+  onDelete()
+  {
+    this.shoppingSV.deleteIngredients(this.editIngIndex);
+    tonClear();
   }
 
 }

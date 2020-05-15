@@ -27,7 +27,6 @@ private recipes: recipeHandler[] =
 public getRecipes()
 {
     return this.recipes.slice();
-
 }
 
 
