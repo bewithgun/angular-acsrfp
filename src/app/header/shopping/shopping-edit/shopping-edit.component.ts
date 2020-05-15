@@ -19,6 +19,10 @@ JFonAddIngredients(form : NgForm)
     this.shoppingSV.updateIngredients(this.editIngIndex,form.value.name,form.value.amount);
   else
     this.shoppingSV.addIngredient(form.value.name,form.value.amount);
+
+    this.isEditMode=false;
+    this.formJsV.reset();
+  
 }
   constructor(private shoppingSV: ShoppingListServService) { }
 
@@ -37,8 +41,14 @@ JFonAddIngredients(form : NgForm)
               'amount': this.editIng.amount
             }
           )
+          
         }
       )    
+  }
+
+  onClear()
+  {
+    this.formJsV.reset();
   }
 
 }
