@@ -9,14 +9,36 @@ import { FormGroup, NgForm } from '@angular/forms';
   
 })
 export class ShoppingEditComponent implements OnInit {
-
+@ViewChild('form') formJsV: NgForm;
+isEditMode = false;
+editIngIndex;
+editIng;
 JFonAddIngredients(form : NgForm)
 {
-  this.shoppingSV.addIngredient(form.value.name,form.value.amount);
+  if(this.isEditMode==true)
+    this.shoppingSV.updateIngredients(this.editIngIndex,form.value.name,form.value.amount);
+  else
+    this.shoppingSV.addIngredient(form.value.name,form.value.amount);
 }
   constructor(private shoppingSV: ShoppingListServService) { }
 
   ngOnInit(): void {
+      this.shoppingSV.callEdit.subscribe(
+            (index) =>
+        {
+          console.log("Edit mode is ",this.isEditMode);
+          this.editIngIndex = index;
+          this.editIng = this.shoppingSV.getIngredientsbyN(this.editIngIndex);
+          this.isEditMode=true;
+          console.log(this.formJsV);
+          this.formJsV.setValue(
+            {
+              'name': this.editIng.name,
+              'amount': this.editIng.amount
+            }
+          )
+        }
+      )    
   }
 
 }

@@ -6,7 +6,8 @@
       <a
         class="list-group-item"
         style="cursor: pointer"
-        *ngFor="let i of shopingSV.getIngredients()"
+        *ngFor="let i of shopingSV.getIngredients() let indexv = index"
+        (click)="onSelectEdit(indexv)"
       >
         {{ i.name }} ({{ i.amount }})
       </a>

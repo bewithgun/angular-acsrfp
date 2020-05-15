@@ -8,8 +8,14 @@ import { ShoppingListServService } from '../../shared/shopping-list-serv.service
   styleUrls: ['./shopping.component.css']
 })
 export class ShoppingComponent implements OnInit {
+  
   constructor(private shopingSV: ShoppingListServService) { }
   ngOnInit(): void {
+  }
+
+  onSelectEdit(indexv)
+  {
+    this.shopingSV.callEdit.next(indexv);
   }
 
 }
