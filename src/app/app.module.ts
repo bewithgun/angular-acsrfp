@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
@@ -29,7 +29,7 @@ var route: Routes =
   {path: 'shopping', component: ShoppingComponent}
 ]
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(route)],
+  imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(route), ReactiveFormsModule],
   declarations: [ AppComponent, HelloComponent, HeaderComponent, RecipeComponent, ShoppingComponent, RecipeListComponent, RecipeDetailComponent, ShoppingEditComponent, RecipeItemComponent, AppDropdownDirective, RecipeNotSelectedComponent, RecipeEditComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ShoppingListServService]

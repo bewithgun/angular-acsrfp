@@ -24,10 +24,15 @@ private recipes: recipeHandler[] =
   ])
 ]
 
-public getRecipes()
+getRecipes(N :number | void) : recipeHandler | any
 {
+  if(typeof N === 'undefined')
     return this.recipes.slice();
+  else
+    return this.recipes.slice()[N];
+
 }
+
 
 
 

@@ -1,1 +1,19 @@
-<h4>Recipe Edit</h4>
+<div class="row">
+	<div class="col-xs-12">
+    <form class="form-group" [formGroup]="recipeEditForm" (ngSubmit)="onSubmit()">
+      <label for="recipeName">Name</label>
+      <input name="recipeName" formControlName="recipeName" class="form-control" type="text" placeholder="Enter Recipe Name">
+
+      <<label for="recipeImageURL">Image Url</label>
+      <input type="text" formControlName="recipeImageUrl" name="recipeImageURL" class="form-control" placeholder="Enter Image URL">
+
+      <br>
+      <img src="" class="img-responsive">
+      <label for="recipeDescription">Description</label>
+      <textarea formControlName="recipeDescription" name="recipeDescription" rows="6" class="form-control"></textarea>
+
+      <br><button class="btn btn-success" type="submit">Save</button>
+      <button class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+</div>
