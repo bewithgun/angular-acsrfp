@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { recipeHandler } from '../recipeHandler.model';
 import { recipeServ } from '../../../shared/recipeServ.service';
 
@@ -10,7 +10,8 @@ import { recipeServ } from '../../../shared/recipeServ.service';
   styleUrls: ['./recipe-edit.component.css']
 })
 export class RecipeEditComponent implements OnInit {
-  recipeEditForm : FormGroup;
+recipeEditForm : FormGroup;
+recipeIngredientsForm = new FormArray([]);
 id: number;
 editMode = false;
 recipeOfId : recipeHandler;
@@ -26,7 +27,6 @@ RImgUrl;
       {
         this.id= params['id']-1;
         this.editMode = this.id != null;
-        console.log("EditMode",this.editMode);
         this.Rname = '';
         this.Rdesc = '';
         this.RImgUrl= '';
@@ -37,6 +37,19 @@ RImgUrl;
           this.Rdesc = this.recipeOfId.recipeDescription;
           this.RImgUrl = this.recipeOfId.recipeImageUrl;
         }
+        if(this.recipeOfId.recipeIngredients[0]!=null)
+        {
+          
+          for (let j of this.recipeOfId.recipeIngredients)
+          {
+            this.recipeIngredientsForm.push(
+              new FormGroup({
+              'ingredientName' : new FormControl(j.name),
+              'ingredientAmount' : new FormControl(j.amount)
+            })
+            )
+          }
+        }
         
       }
     )
@@ -44,13 +57,17 @@ RImgUrl;
       {
         'recipeName': new FormControl(this.Rname),
         'recipeImageUrl': new FormControl(this.RImgUrl),
-        'recipeDescription' : new FormControl(this.Rdesc)
+        'recipeDescription' : new FormControl(this.Rdesc),
+        'ingredientsG':  this.recipeIngredientsForm
       }
     )
-    console.log("form data", this.recipeEditForm.value);
   }
 
   onSubmit()
   {}
+
+    get controls() { // a getter!
+      return (<FormArray>this.recipeEditForm.get('ingredientsG')).controls;
+    }
 
 }

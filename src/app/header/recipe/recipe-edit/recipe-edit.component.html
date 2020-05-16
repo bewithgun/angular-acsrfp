@@ -4,14 +4,33 @@
       <label for="recipeName">Name</label>
       <input name="recipeName" formControlName="recipeName" class="form-control" type="text" placeholder="Enter Recipe Name">
 
-      <<label for="recipeImageURL">Image Url</label>
+      <br><label for="recipeImageURL">Image Url</label>
       <input type="text" formControlName="recipeImageUrl" name="recipeImageURL" class="form-control" placeholder="Enter Image URL">
 
       <br>
       <img src="" class="img-responsive">
       <label for="recipeDescription">Description</label>
-      <textarea formControlName="recipeDescription" name="recipeDescription" rows="6" class="form-control"></textarea>
+      <textarea formControlName="recipeDescription" name="recipeDescription" rows="3" class="form-control"></textarea>
 
+      <br>
+      <div formArrayName="ingredientsG">
+        <div class="row" *ngFor="let i of controls; let indexv = index" [formGroupName]="indexv" >
+          <div class="col-xs-6">
+          <label for="ingredientName">Ingredient Name</label>
+          <input 
+          class="form-control" 
+          type="text" 
+          name="ingredientName" 
+          formControlName="ingredientName">
+          </div>
+
+          <div class="col-xs-6">
+          <label for="ingredientAmount">Ingredient Amount</label>
+          <input formControlName="ingredientAmount" 
+          class="form-control" type="text" name="ingredientAmount">
+          </div>
+        </div>
+      </div>
       <br><button class="btn btn-success" type="submit">Save</button>
       <button class="btn btn-danger">Delete</button>
     </form>
