@@ -10,7 +10,7 @@ import { recipeServ } from '../../../shared/recipeServ.service';
   styleUrls: ['./recipe-item.component.css']
 })
 export class RecipeItemComponent implements OnInit {
-@Output() JLonSelectRecipe = new EventEmitter<recipeHandler>();
+JLonSelectRecipe = new EventEmitter<recipeHandler>();
 @Input() recipeData: recipeHandler;
 JFOnSelctRecipe(recipeData)
 {

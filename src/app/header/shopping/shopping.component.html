@@ -9,7 +9,7 @@
         *ngFor="let i of shopingSV.getIngredients() let indexv = index"
         (click)="onSelectEdit(indexv)"
       >
-        {{ i.name }} ({{ i.amount }})
+        {{ i.ingredientName }} ({{ i.ingredientAmount }})
       </a>
     </ul>
   </div>

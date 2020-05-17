@@ -16,6 +16,7 @@ import { ShoppingListServService } from './shared/shopping-list-serv.service';
 import { RouterModule, Routes } from '@angular/router';
 import { RecipeNotSelectedComponent } from './header/recipe/recipe-not-selected/recipe-not-selected.component';
 import { RecipeEditComponent } from './header/recipe/recipe-edit/recipe-edit.component';
+import { recipeServ } from './shared/recipeServ.service';
 
 var route: Routes =
 [
@@ -32,6 +33,6 @@ var route: Routes =
   imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(route), ReactiveFormsModule],
   declarations: [ AppComponent, HelloComponent, HeaderComponent, RecipeComponent, ShoppingComponent, RecipeListComponent, RecipeDetailComponent, ShoppingEditComponent, RecipeItemComponent, AppDropdownDirective, RecipeNotSelectedComponent, RecipeEditComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [ShoppingListServService]
+  providers: [ShoppingListServService,recipeServ]
 })
 export class AppModule { }

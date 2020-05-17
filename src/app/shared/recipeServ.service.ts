@@ -46,4 +46,11 @@ getRecipes(N :number | void) : recipeHandler | any
     this.syncOverAll.next();
   }
 
+  deleteRecipe(N: number)
+  {
+    this.recipes.splice(N-1,1);
+    this.syncOverAll.next();
+    console.log("In tht place od del",this.recipes[N]);
+  }
+
 }

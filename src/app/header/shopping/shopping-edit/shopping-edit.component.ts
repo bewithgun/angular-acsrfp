@@ -37,8 +37,8 @@ JFonAddIngredients(form : NgForm)
           console.log(this.formJsV);
           this.formJsV.setValue(
             {
-              'name': this.editIng.name,
-              'amount': this.editIng.amount
+              'name': this.editIng.ingredientName,
+              'amount': this.editIng.ingredientAmount
             }
           )
           

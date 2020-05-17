@@ -9,16 +9,14 @@ import { ingredientHandler } from '../../../shared/indrigients.model';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
-  @Output() JLRecipeListOnSelect = new EventEmitter<recipeHandler>();
-  JFonSelectRecipeItem(recipe: recipeHandler)
-  {
-    this.JLRecipeListOnSelect.emit(recipe)
-  }
   recipes: recipeHandler[];
   constructor(private recSV: recipeServ) { }
 
   ngOnInit() {
+    console.log("r=",this.recipes);
     this.recipes = this.recSV.getRecipes();
+    console.log("r=",this.recipes);    
+
     this.recSV.syncOverAll.subscribe(
       () => {
      this.recipes = this.recSV.getRecipes();

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { recipeHandler } from '../recipeHandler.model';
 import { ShoppingListServService } from '../../../shared/shopping-list-serv.service';
 import { recipeServ } from '../../../shared/recipeServ.service';
-import { RouterLinkActive, ActivatedRouteSnapshot, ActivatedRoute, Params } from '@angular/router';
+import { RouterLinkActive, ActivatedRouteSnapshot, ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -17,14 +17,13 @@ export class RecipeDetailComponent implements OnInit {
 
   // @ViewChild('RecipeIng') RecipeIngJS;
 
-  constructor(private ShoppingSV: ShoppingListServService,private RecipeSV: recipeServ,private activeR : ActivatedRoute) { }
+  constructor(private ShoppingSV: ShoppingListServService,private RecipeSV: recipeServ,private activeR : ActivatedRoute,private routeM: Router) { }
   
   onAddToShoppingList()
   {
     for(let i of this.recipeData.recipeIngredients)
     {
-    this.ShoppingSV.addIngredient(i.name,i.amount);
-
+    this.ShoppingSV.addIngredient(i.ingredientName,i.ingredientAmount);
     }
   }
   ngOnInit(){
@@ -34,9 +33,22 @@ export class RecipeDetailComponent implements OnInit {
    this.activeR.params.subscribe(
      (params : Params)=>{
        this.id=+params['id'];
-       this.recipeData = this.FullrecipeData[this.id-1];
+       this.recipeData = this.RecipeSV.getRecipes(this.id-1);
+     }
+   )
+   this.RecipeSV.syncOverAll.subscribe(
+     ()=>
+     {
+       console.log("del");
+       this.recipeData = this.RecipeSV.getRecipes(this.id-1);
      }
    )
   }
+
+    onDeleteRecipe()
+    {      
+      this.RecipeSV.deleteRecipe(this.id);
+        this.routeM.navigate(['']);
+    }
 
 }
