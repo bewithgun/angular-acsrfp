@@ -51,4 +51,6 @@ export class RecipeDetailComponent implements OnInit {
         this.routeM.navigate(['']);
     }
 
+
+
 }

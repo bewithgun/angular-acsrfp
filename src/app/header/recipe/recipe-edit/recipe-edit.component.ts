@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { recipeHandler } from '../recipeHandler.model';
 import { recipeServ } from '../../../shared/recipeServ.service';
@@ -15,7 +15,7 @@ recipeIngredientsForm = new FormArray([]);
 id: number;
 editMode = false;
 recipeOfId : recipeHandler;
-  constructor(private routeActv: ActivatedRoute,private recipeSv: recipeServ) { }
+  constructor(private routeActv: ActivatedRoute,private recipeSv: recipeServ,private routeM : Router) { }
 
 Rname;
 Rdesc;
@@ -66,6 +66,7 @@ RImgUrl;
   onSubmit()
   {
         this.editMode ? this.recipeSv.updateRecipe(this.id,this.recipeEditForm.value) : this.recipeSv.addRecipe(this.recipeEditForm.value);
+        this.onChange();
   }
 
     get controls() { // a getter!
@@ -82,6 +83,11 @@ RImgUrl;
         }
         )
       )
+    }
+    
+    onChange()
+    {
+      this.routeM.navigate(['']);
     }
 
 

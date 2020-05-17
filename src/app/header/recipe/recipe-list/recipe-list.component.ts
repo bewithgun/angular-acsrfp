@@ -13,9 +13,8 @@ export class RecipeListComponent implements OnInit {
   constructor(private recSV: recipeServ) { }
 
   ngOnInit() {
-    console.log("r=",this.recipes);
+    
     this.recipes = this.recSV.getRecipes();
-    console.log("r=",this.recipes);    
 
     this.recSV.syncOverAll.subscribe(
       () => {
