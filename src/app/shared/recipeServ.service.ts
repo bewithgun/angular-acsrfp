@@ -1,7 +1,10 @@
 import { recipeHandler } from "../header/recipe/recipeHandler.model";
 import { ingredientHandler } from "./indrigients.model";
+import { Subject } from "rxjs";
 
 export class recipeServ {
+
+syncOverAll = new Subject<void>();
 
 private recipes: recipeHandler[] = 
 [
@@ -29,11 +32,18 @@ getRecipes(N :number | void) : recipeHandler | any
     return this.recipes.slice();
   else
     return this.recipes.slice()[N];
-
 }
 
+  updateRecipe(N: number ,Srecipe: recipeHandler )
+  {
+      this.recipes[N]=Srecipe;
+      this.syncOverAll.next();
+  }
 
-
-
+  addRecipe(Srecipe: recipeHandler)
+  {
+    this.recipes.push(Srecipe);
+    this.syncOverAll.next();
+  }
 
 }

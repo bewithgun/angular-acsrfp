@@ -1,10 +1,10 @@
 export class ingredientHandler
 {
-  name;
-  amount;
+  ingredientName;
+  ingredientAmount;
   constructor(name,amount)
   {
-    this.name=name;
-    this.amount=amount;
+    this.ingredientName=name;
+    this.ingredientAmount=amount;
   }
 }

@@ -26,7 +26,7 @@ RImgUrl;
       (params : Params) =>
       {
         this.id= params['id']-1;
-        this.editMode = this.id != null;
+        this.editMode = this.id > -1;
         this.Rname = '';
         this.Rdesc = '';
         this.RImgUrl= '';
@@ -44,8 +44,8 @@ RImgUrl;
           {
             this.recipeIngredientsForm.push(
               new FormGroup({
-              'ingredientName' : new FormControl(j.name),
-              'ingredientAmount' : new FormControl(j.amount)
+              'ingredientName' : new FormControl(j.ingredientName),
+              'ingredientAmount' : new FormControl(j.ingredientAmount)
             })
             )
           }
@@ -58,16 +58,30 @@ RImgUrl;
         'recipeName': new FormControl(this.Rname),
         'recipeImageUrl': new FormControl(this.RImgUrl),
         'recipeDescription' : new FormControl(this.Rdesc),
-        'ingredientsG':  this.recipeIngredientsForm
+        'recipeIngredients':  this.recipeIngredientsForm
       }
     )
   }
 
   onSubmit()
-  {}
+  {
+        this.editMode ? this.recipeSv.updateRecipe(this.id,this.recipeEditForm.value) : this.recipeSv.addRecipe(this.recipeEditForm.value);
+  }
 
     get controls() { // a getter!
-      return (<FormArray>this.recipeEditForm.get('ingredientsG')).controls;
+      return (<FormArray>this.recipeEditForm.get('recipeIngredients')).controls;
+    }
+
+    addIngredientCOntrol()
+    {
+      this.recipeIngredientsForm.push(
+        new FormGroup(
+        {
+          'ingredientName' : new FormControl(null),
+          'ingredientAmount' : new FormControl(null)
+        }
+        )
+      )
     }
 
 }

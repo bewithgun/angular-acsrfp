@@ -19,6 +19,11 @@ export class RecipeListComponent implements OnInit {
 
   ngOnInit() {
     this.recipes = this.recSV.getRecipes();
+    this.recSV.syncOverAll.subscribe(
+      () => {
+     this.recipes = this.recSV.getRecipes();
+      }
+    )
   }
 
 }
