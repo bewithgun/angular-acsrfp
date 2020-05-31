@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
 import { HeaderComponent } from './header/header.component';
 import { RecipeComponent } from './header/recipe/recipe.component';
 import { RecipeListComponent } from './header/recipe/recipe-list/recipe-list.component';
@@ -28,7 +27,7 @@ var route: Routes =
   ]}]
 @NgModule({
   imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(route), ReactiveFormsModule,shoppingModule],
-  declarations: [ AppComponent, HelloComponent, HeaderComponent, RecipeComponent, RecipeListComponent, RecipeDetailComponent,  RecipeItemComponent, AppDropdownDirective, RecipeNotSelectedComponent, RecipeEditComponent ],
+  declarations: [ AppComponent, HeaderComponent, RecipeComponent, RecipeListComponent, RecipeDetailComponent,  RecipeItemComponent, AppDropdownDirective, RecipeNotSelectedComponent, RecipeEditComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ShoppingListServService,recipeServ]
 })
