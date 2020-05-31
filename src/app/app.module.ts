@@ -6,10 +6,8 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { HeaderComponent } from './header/header.component';
 import { RecipeComponent } from './header/recipe/recipe.component';
-import { ShoppingComponent } from './header/shopping/shopping.component';
 import { RecipeListComponent } from './header/recipe/recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './header/recipe/recipe-detail/recipe-detail.component';
-import { ShoppingEditComponent } from './header/shopping/shopping-edit/shopping-edit.component';
 import { RecipeItemComponent } from './header/recipe/recipe-item/recipe-item.component';
 import { AppDropdownDirective } from './app-dropdown.directive';
 import { ShoppingListServService } from './shared/shopping-list-serv.service';
@@ -17,6 +15,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RecipeNotSelectedComponent } from './header/recipe/recipe-not-selected/recipe-not-selected.component';
 import { RecipeEditComponent } from './header/recipe/recipe-edit/recipe-edit.component';
 import { recipeServ } from './shared/recipeServ.service';
+import { shoppingModule } from './header/shopping/shoping.module';
 
 var route: Routes =
 [
@@ -26,12 +25,10 @@ var route: Routes =
     {path: 'new', component: RecipeEditComponent},
     {path: 'detail/:id/edit', component: RecipeEditComponent},
     {path: '', component: RecipeNotSelectedComponent}
-  ]},
-  {path: 'shopping', component: ShoppingComponent}
-]
+  ]}]
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(route), ReactiveFormsModule],
-  declarations: [ AppComponent, HelloComponent, HeaderComponent, RecipeComponent, ShoppingComponent, RecipeListComponent, RecipeDetailComponent, ShoppingEditComponent, RecipeItemComponent, AppDropdownDirective, RecipeNotSelectedComponent, RecipeEditComponent ],
+  imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(route), ReactiveFormsModule,shoppingModule],
+  declarations: [ AppComponent, HelloComponent, HeaderComponent, RecipeComponent, RecipeListComponent, RecipeDetailComponent,  RecipeItemComponent, AppDropdownDirective, RecipeNotSelectedComponent, RecipeEditComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ShoppingListServService,recipeServ]
 })
