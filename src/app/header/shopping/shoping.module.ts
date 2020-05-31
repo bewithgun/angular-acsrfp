@@ -17,7 +17,6 @@ import { RouterModule } from "@angular/router";
     FormsModule,
     RouterModule.forChild([
   {path: 'shopping', component: ShoppingComponent}
-    
     ])
   ]
   

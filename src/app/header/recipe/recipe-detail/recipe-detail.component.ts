@@ -25,6 +25,8 @@ export class RecipeDetailComponent implements OnInit {
     {
     this.ShoppingSV.addIngredient(i.ingredientName,i.ingredientAmount);
     }
+    this.routeM.navigate(["shopping"]);
+    console.log("nav to shop");
   }
   ngOnInit(){
     // this.RecipeSV.getRecipes(+this.activeLinkData.params['id']);
